@@ -5,22 +5,15 @@ class Static
   end
 
   def call(env)
-    # puts Dir.pwd
     req = Rack::Request.new(env)
     path = req.path
-    # path = Dir.pwd + path
-    #
-    # puts path
-    # file = File.read(path)
-    # res = Rack::Response.new(env)
-    # res.write(file)
+
     if path.index('/public')
       @file_server.call(env)
     else
       @app.call(env)
     end
-    # res = @file_server.call(env)
-    # res
+  
   end
 
 
